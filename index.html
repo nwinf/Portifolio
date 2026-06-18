@@ -3,668 +3,322 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Naomi W. Kimambo - software developer portfolio with practical web, data, and AI work." />
   <title>Naomi W. Kimambo | Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fira+Code:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div id="app" v-cloak>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="#home" @click="closeMenu">
+          <span class="brand__mark">NK</span>
+          <span class="brand__text">Naomi Kimambo</span>
+        </a>
 
-  <!-- NAV -->
-  <nav class="nav" id="navbar">
-    <div class="nav__logo">NK<span>.</span></div>
-    <ul class="nav__links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:0.75rem;">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <!-- Sun icon (shown in dark mode) -->
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-        </svg>
-        <!-- Moon icon (shown in light mode) -->
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-      </button>
-      <button class="nav__menu-btn" id="menuBtn" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+        <button
+          class="menu-btn"
+          type="button"
+          :aria-expanded="menuOpen ? 'true' : 'false'"
+          aria-controls="site-nav"
+          aria-label="Toggle navigation"
+          @click="toggleMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav" id="mobileNav">
-    <ul>
-      <li><a href="#about" onclick="closeMobile()">About</a></li>
-      <li><a href="#skills" onclick="closeMobile()">Skills</a></li>
-      <li><a href="#experience" onclick="closeMobile()">Experience</a></li>
-      <li><a href="#projects" onclick="closeMobile()">Projects</a></li>
-      <li><a href="#education" onclick="closeMobile()">Education</a></li>
-      <li><a href="#contact" onclick="closeMobile()">Contact</a></li>
-    </ul>
+        <div id="site-nav" class="nav__links" :class="{ open: menuOpen }">
+          <a
+            v-for="link in navLinks"
+            :key="link.id"
+            :href="`#${link.id}`"
+            :class="{ active: activeSection === link.id }"
+            @click="closeMenu"
+          >
+            {{ link.label }}
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section-anchor" id="home">
+        <div class="hero__copy">
+          <p class="eyebrow">Software developer / data & systems</p>
+          <h1>Naomi W. Kimambo</h1>
+          <p class="hero__lede">
+            I am currently working as a Software Developer at National Housing Corporation.
+            I build practical web applications, internal systems, and data-driven tools while growing toward AI, data science, and computer science roles.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#work" class="btn btn--primary">View work</a>
+            <a href="#contact" class="btn btn--ghost">Contact me</a>
+          </div>
+
+          <div class="pill-row" aria-label="Core technologies">
+            <span v-for="item in heroPills" :key="item" class="pill">{{ item }}</span>
+          </div>
+        </div>
+
+        <aside class="hero__card">
+          <img src="assets/profile-cutout.png" alt="Portrait of Naomi W. Kimambo" class="hero__photo" />
+          <div class="hero__card-body">
+            <p class="card-label">Current focus</p>
+            <h2>Software development today, AI and data science next.</h2>
+            <ul class="check-list">
+              <li>Software Developer at NHC</li>
+              <li>Building public and internal systems</li>
+              <li>Growing into AI, data science, and computer science</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section section-anchor" id="about">
+        <div class="section__header">
+          <p class="section__kicker">About</p>
+          <h2>Software developer building useful systems</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              I am a software developer with experience across web applications, internal systems,
+              applied machine learning, and technical support. I care about clarity, usability,
+              and code that stays maintainable after the first release.
+            </p>
+            <p>
+              At the moment I am focused on software development at National Housing Corporation,
+              including work on the NHC website and the recruitment portal. Long term, I want to grow further
+              into AI, data science, and computer science work.
+            </p>
+          </div>
+
+          <div class="panel facts">
+            <div class="fact">
+              <span>Location</span>
+              <strong>Dar es Salaam, Tanzania</strong>
+            </div>
+            <div class="fact">
+              <span>Current role</span>
+              <strong>Software Developer, NHC</strong>
+            </div>
+            <div class="fact">
+              <span>Education</span>
+              <strong>BSc. Computer Science</strong>
+            </div>
+            <div class="fact">
+              <span>Focus</span>
+              <strong>Software, AI, data science</strong>
+            </div>
+            <div class="fact">
+              <span>Certification</span>
+              <strong>SAL1 - ongoing</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft section-anchor" id="skills">
+        <div class="section__header">
+          <p class="section__kicker">Skills</p>
+          <h2>Tools and technologies I use across the stack.</h2>
+        </div>
+
+        <div class="grid grid--skills">
+          <article v-for="group in skillGroups" :key="group.title" class="panel">
+            <h3>{{ group.title }}</h3>
+            <div class="tag-cloud">
+              <span v-for="item in group.items" :key="item" class="tag">{{ item }}</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-anchor" id="experience">
+        <div class="section__header">
+          <p class="section__kicker">Experience</p>
+          <h2>Recent roles and practical work.</h2>
+        </div>
+
+        <div class="timeline">
+          <article v-for="job in experience" :key="job.role + job.org" class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="panel timeline__content">
+              <div class="timeline__top">
+                <div>
+                  <p class="timeline__date">{{ job.period }}</p>
+                  <h3>{{ job.role }}</h3>
+                  <p class="timeline__org">{{ job.org }}</p>
+                </div>
+                <span v-if="job.badge" class="badge">{{ job.badge }}</span>
+              </div>
+
+              <ul class="list">
+                <li v-for="bullet in job.bullets" :key="bullet">{{ bullet }}</li>
+              </ul>
+
+              <div class="tag-cloud tag-cloud--compact">
+                <span v-for="tag in job.tags" :key="tag" class="tag">{{ tag }}</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--soft section-anchor" id="systems">
+        <div class="section__header">
+          <p class="section__kicker">Current systems</p>
+          <h2>Live platforms I work with right now.</h2>
+        </div>
+
+        <div class="grid grid--projects">
+          <article class="panel project">
+            <div class="project__top">
+              <div>
+                <p class="badge badge--soft">NHC</p>
+                <h3>NHC website</h3>
+              </div>
+              <div class="project__links">
+                <a href="https://www.nhc.co.tz/" target="_blank" rel="noopener">Visit site</a>
+              </div>
+            </div>
+            <p class="project__desc">
+              Public-facing website for National Housing Corporation. I have contributed to keeping it clear, usable, and easy to maintain.
+            </p>
+          </article>
+
+          <article class="panel project">
+            <div class="project__top">
+              <div>
+                <p class="badge badge--soft">NHC</p>
+                <h3>Recruitment portal</h3>
+              </div>
+              <div class="project__links">
+                <a href="https://ajira.nhc.co.tz/" target="_blank" rel="noopener">Visit portal</a>
+              </div>
+            </div>
+            <p class="project__desc">
+              Recruitment portal for job-related workflows and applications. It reflects the kind of software work I do in my current role, including the Vacancy Management Module.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--soft section-anchor" id="work">
+        <div class="section__header">
+          <p class="section__kicker">Selected work</p>
+          <h2>Projects that show the range of my work.</h2>
+        </div>
+
+        <div class="grid grid--projects">
+          <article
+            v-for="project in projects"
+            :key="project.title"
+            class="panel project"
+            :class="{ 'project--featured': project.featured }"
+          >
+            <div class="project__top">
+              <div>
+                <p v-if="project.badge" class="badge badge--soft">{{ project.badge }}</p>
+                <h3>{{ project.title }}</h3>
+              </div>
+              <div class="project__links" v-if="project.links && project.links.length">
+                <a v-for="link in project.links" :key="link.label" :href="link.href" target="_blank" rel="noopener">
+                  {{ link.label }}
+                </a>
+              </div>
+            </div>
+
+            <p class="project__desc">{{ project.description }}</p>
+
+            <ul v-if="project.highlights" class="list list--tight">
+              <li v-for="point in project.highlights" :key="point">{{ point }}</li>
+            </ul>
+
+            <div class="tag-cloud tag-cloud--compact">
+              <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-anchor" id="education">
+        <div class="section__header">
+          <p class="section__kicker">Education and certifications</p>
+          <h2>Academic background and training.</h2>
+        </div>
+
+        <div class="edu-grid">
+          <div class="panel">
+            <h3>Education</h3>
+            <div class="stack">
+              <article v-for="edu in education" :key="edu.title" class="stack__item">
+                <p class="timeline__date">{{ edu.period }}</p>
+                <h4>{{ edu.title }}</h4>
+                <p class="muted">{{ edu.org }}</p>
+                <p class="edu-result">{{ edu.result }}</p>
+                <p class="muted">{{ edu.note }}</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Certifications</h3>
+            <div class="cert-list">
+              <article v-for="cert in certifications" :key="cert.name" class="cert-item">
+                <div class="cert-item__main">
+                  <p class="timeline__date">{{ cert.date }}</p>
+                  <h4>{{ cert.name }}</h4>
+                  <p class="muted">{{ cert.org }}</p>
+                  <p v-if="cert.note" class="cert-item__note">{{ cert.note }}</p>
+                </div>
+                <a v-if="cert.url" :href="cert.url" target="_blank" rel="noopener" class="cert-item__link">
+                  Credential URL
+                </a>
+                <span v-else class="cert-item__link cert-item__link--muted">
+                  Entry
+                </span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft section-anchor" id="contact">
+        <div class="section__header">
+          <p class="section__kicker">Contact</p>
+          <h2>Open to software, frontend, and data opportunities.</h2>
+        </div>
+
+        <div class="contact panel">
+          <p>
+            If you are hiring for software development, frontend, or data work, I would love to connect.
+            I am happy to share more project details or walk through the code behind this portfolio.
+          </p>
+
+          <div class="contact__links">
+            <a href="mailto:naomiwinford@gmail.com">naomiwinford@gmail.com</a>
+            <a href="tel:+255657180901">+255 657 180 901</a>
+            <a href="https://www.linkedin.com/in/naomi-kimambo-706559234" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/nwinf" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Naomi W. Kimambo - Software Developer</p>
+    </footer>
   </div>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero__bg"></div>
-    <div class="hero__content">
-      <p class="hero__greeting">Hello, I'm</p>
-      <h1 class="hero__name">Naomi W.<br /><span>Kimambo</span></h1>
-      <p class="hero__roles">
-        <span class="role-text" id="roleText"></span><span class="cursor">|</span>
-      </p>
-      <p class="hero__tagline">
-        Results-driven Software Developer and Data Scientist building intelligent, end-to-end systems — from full-stack web applications to AI-powered predictive models that solve real-world problems in healthcare, finance, and the public sector.
-      </p>
-      <div class="hero__cta">
-        <a href="#projects" class="btn btn--primary">View My Work</a>
-        <a href="#contact" class="btn btn--outline">Get In Touch</a>
-      </div>
-      <div class="hero__socials">
-        <a href="https://www.linkedin.com/in/naomi-kimambo-706559234" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="https://github.com/nwinf" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        </a>
-        <a href="mailto:naomiwinford@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="hero__scroll">
-      <span>Scroll down</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section__header">
-        <span class="section__tag">01 / About</span>
-        <h2 class="section__title">Who I Am</h2>
-      </div>
-      <div class="about__grid">
-        <div class="about__text">
-          <p>
-            I am a STEM-focused developer specializing in building intelligent, real-world systems that combine software engineering, machine learning, and cybersecurity principles. My experience spans full-stack system development, where I design and build platforms such as recruitment systems and asset management systems, as well as applied machine learning projects in healthcare, including tumor detection from medical images and lung cancer prediction using symptom-based data. Alongside development and AI, I have a growing background in cybersecurity, having completed SAL1 certification training, which strengthens my ability to think about system security, data protection, and risk analysis when designing solutions. I am passionate about building impactful technology that solves real problems, especially in healthcare and enterprise systems, and I enjoy working across the entire development pipeline—from data and model design to deployment and secure system integration.
-
-          </p>
-          <p>
-            Core interests: Artificial Intelligence, Machine Learning, Full-Stack Development, Cybersecurity, Intelligent Systems.
-          </p>
-          
-          <div class="about__stats">
-            <div class="stat">
-              <span class="stat__number">6+</span>
-              <span class="stat__label">Projects</span>
-            </div>
-            <div class="stat">
-              <span class="stat__number">3</span>
-              <span class="stat__label">Internships</span>
-            </div>
-            <div class="stat">
-              <span class="stat__number">6</span>
-              <span class="stat__label">Certifications</span>
-            </div>
-          </div>
-        </div>
-        <div class="about__card">
-          <div class="about__avatar">
-            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-              <defs>
-                <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#8b5cf6"/>
-                  <stop offset="100%" style="stop-color:#6366f1"/>
-                </linearGradient>
-              </defs>
-              <circle cx="60" cy="60" r="60" fill="url(#bg)"/>
-              <ellipse cx="60" cy="96" rx="32" ry="18" fill="#4c3799"/>
-              <rect x="53" y="74" width="14" height="14" rx="4" fill="#f5cba7"/>
-              <ellipse cx="60" cy="62" rx="22" ry="24" fill="#f5cba7"/>
-              <ellipse cx="60" cy="42" rx="22" ry="14" fill="#1a1018"/>
-              <ellipse cx="38" cy="58" rx="5" ry="12" fill="#1a1018"/>
-              <ellipse cx="82" cy="58" rx="5" ry="12" fill="#1a1018"/>
-              <ellipse cx="52" cy="63" rx="3.5" ry="4" fill="#2d1b00"/>
-              <ellipse cx="68" cy="63" rx="3.5" ry="4" fill="#2d1b00"/>
-              <circle cx="53.5" cy="61.5" r="1.2" fill="white"/>
-              <circle cx="69.5" cy="61.5" r="1.2" fill="white"/>
-              <ellipse cx="60" cy="70" rx="2" ry="1.5" fill="#e0a87c"/>
-              <path d="M53 75 Q60 80 67 75" stroke="#c0795a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="about__info">
-            <div class="info__row">
-              <span class="info__label">Name</span>
-              <span class="info__value">Naomi W. Kimambo</span>
-            </div>
-            <div class="info__row">
-              <span class="info__label">Current Role</span>
-              <span class="info__value">Software Developer @ NHC</span>
-            </div>
-            <div class="info__row">
-              <span class="info__label">Degree</span>
-              <span class="info__value">BSc. Computer Science</span>
-            </div>
-            <div class="info__row">
-              <span class="info__label">Location</span>
-              <span class="info__value">Dar es Salaam, Tanzania</span>
-            </div>
-            <div class="info__row">
-              <span class="info__label">Email</span>
-              <span class="info__value">naomiwinford@gmail.com</span>
-            </div>
-            <div class="info__row">
-              <span class="info__label">Phone</span>
-              <span class="info__value">+255 657 180 901</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="section section--dark" id="skills">
-    <div class="container">
-      <div class="section__header">
-        <span class="section__tag">02 / Skills</span>
-        <h2 class="section__title">What I Work With</h2>
-      </div>
-      <div class="skills__grid">
-
-        <div class="skill-card">
-          <div class="skill-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
-          <h3>Languages</h3>
-          <div class="skill-tags">
-            <span>Python</span><span>JavaScript</span><span>SQL</span>
-            <span>HTML / CSS</span><span>Java</span><span>C</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3>ML / AI Frameworks</h3>
-          <div class="skill-tags">
-            <span>Scikit-learn</span><span>TensorFlow</span><span>Keras</span>
-            <span>CNN</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>Web & Backend</h3>
-          <div class="skill-tags">
-            <span>Django</span><span>Flask</span><span>FastAPI</span>
-            <span>REST APIs</span><span>Django REST Framework</span><span>Node.js</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          </div>
-          <h3>Databases</h3>
-          <div class="skill-tags">
-            <span>PostgreSQL</span><span>MySQL</span><span>SQLite</span>
-            <span>Database Design</span><span>Query Optimization</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3>Tools & DevOps</h3>
-          <div class="skill-tags">
-            <span>Git / GitHub</span><span>Postman</span><span>OpenCV</span>
-            <span>Linux</span><span>VS Code</span><span>Jupyter</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <h3>Other</h3>
-          <div class="skill-tags">
-            <span>Cybersecurity</span><span>Network Security</span>
-            <span>Systems Analysis</span><span>Gap Analysis</span><span>SDLC</span><span>UML</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <div class="container">
-      <div class="section__header">
-        <span class="section__tag">03 / Experience</span>
-        <h2 class="section__title">Where I've Worked</h2>
-      </div>
-      <div class="timeline">
-
-        <!-- NHC -->
-        <div class="timeline__item">
-          <div class="timeline__dot timeline__dot--active"></div>
-          <div class="timeline__content">
-            <div class="timeline__header">
-              <div>
-                <span class="timeline__date">Oct 2025 — Present</span>
-                <h3>Software Developer</h3>
-                <p class="timeline__org">National Housing Corporation (NHC) &mdash; Internship &middot; Dar es Salaam, Tanzania</p>
-              </div>
-              <span class="timeline__badge">Current</span>
-            </div>
-            <ul class="timeline__list">
-              <li>Developed and maintained internal enterprise web applications serving <em>200+ staff</em> across departments, reducing manual processing time by approximately <em>40%</em> through workflow automation.</li>
-              <li>Designed relational database schemas and optimised SQL queries for housing registry systems, improving data retrieval speed and cutting report generation time significantly.</li>
-              <li>Engineered a custom role-based approval workflow automating asset requests and tracking, eliminating manual data entry bottlenecks and improving audit accuracy.</li>
-              <li>Collaborated with cross-functional teams — finance, administration, and IT — to translate complex business requirements into scalable, production-ready software.</li>
-              <li>Implemented role-based access control (RBAC) across internal tools, strengthening data security and ensuring compliance with institutional policies.</li>
-            </ul>
-            <div class="timeline__tags">
-              <span>Django</span><span>Python</span><span>PostgreSQL</span><span>REST APIs</span><span>RBAC</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRA -->
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <span class="timeline__date">Jul 2024 — Sep 2024 &middot; 3 mos</span>
-            <h3>IT Support</h3>
-            <p class="timeline__org">Tanzania Revenue Authority (TRA) &mdash; Internship &middot; Arusha, Tanzania</p>
-            <ul class="timeline__list">
-              <li>Supported development and testing of internal data management modules used by revenue officers across multiple regional offices, contributing to structured QA and UAT cycles.</li>
-              <li>Diagnosed and resolved hardware and software issues for <em>20+ workstations</em>, ensuring minimal downtime for critical tax administration operations.</li>
-              <li>Documented technical processes and user manuals to support onboarding of non-technical staff onto digital platforms, reducing training friction.</li>
-              <li>Gained exposure to large-scale government IT infrastructure and enterprise-level data handling practices.</li>
-            </ul>
-            <div class="timeline__tags">
-              <span>IT Support</span><span>QA &amp; UAT</span><span>Technical Documentation</span><span>Network Infrastructure</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- UDOM Industrial Trainee -->
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <span class="timeline__date">Jul 2023 — Oct 2023 &middot; 4 mos</span>
-            <h3>Industrial Practical Trainee</h3>
-            <p class="timeline__org">University of Dodoma</p>
-            <ul class="timeline__list">
-              <li>Developed and engineered a Lung Cancer Prediction System using Python and Machine Learning, focusing on data preprocessing and predictive modelling for early-stage health diagnostics.</li>
-              <li>Built a full-stack Pharmacy Inventory Management System using Java Web Programming with real-time stock tracking and automated reorder alerts.</li>
-              <li>Architected relational database schemas for complex data environments, ensuring data integrity and optimised query performance.</li>
-              <li>Presented technical project documentation and functional prototypes to supervisors, receiving commendations for code efficiency and UI design.</li>
-            </ul>
-            <div class="timeline__tags">
-              <span>Python</span><span>Machine Learning</span><span>Java</span><span>OOP</span><span>Database Design</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- AfricAcademy -->
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <span class="timeline__date">Aug 2022 — Oct 2022 &middot; 3 mos</span>
-            <h3>Intern — Science Into Use (SITU) Department</h3>
-            <p class="timeline__org">AfricAcademy – Arusha Science School &middot; Part-time &middot; Arusha, Tanzania</p>
-            <ul class="timeline__list">
-              <li>Facilitated hands-on robotics and web programming workshops, mentoring students in building functional prototypes and developing critical thinking skills.</li>
-              <li>Coordinated community outreach programs to train local youth in basic computer literacy.</li>
-              <li>Designed interactive curriculum for computer-simulated technologies, introducing students to robotics and 3D printing fundamentals.</li>
-              <li>Curated weekly educational content on global tech trends, AI advancements, and cybersecurity news.</li>
-            </ul>
-            <div class="timeline__tags">
-              <span>Robotics</span><span>Web Programming</span><span>STEM Education</span><span>Community Outreach</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section section--dark" id="projects">
-    <div class="container">
-      <div class="section__header">
-        <span class="section__tag">04 / Projects</span>
-        <h2 class="section__title">What I've Built</h2>
-      </div>
-      <div class="projects__grid">
-
-        <!-- NeuroPredict - Featured -->
-        <div class="project-card project-card--featured">
-          <div class="project-card__badge">Featured Project</div>
-          <div class="project-card__header">
-            <h3>NeuroPredict</h3>
-            <div class="project-card__links">
-              <a href="https://github.com/nwinf/NeuroPredict" target="_blank" rel="noopener" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
-            </div>
-          </div>
-          <p class="project-card__desc">
-            End-to-end AI platform for brain cancer detection addressing Tanzania's critical shortage of radiologists. Built a <strong>CNN model trained on 6,000+ labeled MRI scans</strong> achieving 96% classification accuracy, with a FastAPI REST backend enabling real-time inference and a web interface with PDF report generation and <strong>Explainable AI (XAI)</strong> for transparent clinical decision-making.
-          </p>
-          <ul class="project-card__highlights">
-            <li>CNN model trained on 6,000+ labeled MRI scans (TCIA & Kaggle datasets)</li>
-            <li>FastAPI REST backend for real-time prediction</li>
-            <li>Web interface with login, dashboard, and PDF report generation</li>
-            <li>Explainable AI (XAI) for transparent clinical decisions</li>
-          </ul>
-          <div class="project-card__tech">
-            <span>Python</span><span>TensorFlow</span><span>Keras</span>
-            <span>FastAPI</span><span>HTML/CSS/JS</span><span>OpenCV</span><span>PostgreSQL</span>
-          </div>
-        </div>
-
-        <!-- Office Asset Registry -->
-        <div class="project-card">
-          <div class="project-card__header">
-            <h3>Office Asset Registry</h3>
-            <div class="project-card__links">
-              <a href="https://github.com/nwinf/office_asset_registry" target="_blank" rel="noopener" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
-            </div>
-          </div>
-          <p class="project-card__desc">
-            End-to-end Django asset management system that digitises physical records and manages
-            the full hardware asset lifecycle with a custom approval workflow, automated request
-            tracking, and audit reporting.
-          </p>
-          <div class="project-card__tech">
-            <span>Python</span><span>Django</span><span>Django REST Framework</span><span>SQL</span>
-          </div>
-        </div>
-
-        <!-- Lung Cancer Prediction -->
-        <div class="project-card">
-          <div class="project-card__header">
-            <h3>Lung Cancer Prediction</h3>
-            <div class="project-card__links">
-              <a href="https://github.com/nwinf/LungcancerPrediction" target="_blank" rel="noopener" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
-            </div>
-          </div>
-          <p class="project-card__desc">
-            Binary classification ML model for early-stage lung cancer risk prediction using patient symptom and demographic data. Applied <strong>feature engineering, cross-validation, and hyperparameter tuning</strong> to maximise precision and recall — producing a lightweight, interpretable model suitable for integration into clinical screening tools.
-          </p>
-          <div class="project-card__tech">
-            <span>Python</span><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Jupyter</span>
-          </div>
-        </div>
-
-        <!-- Chatbot Flask -->
-        <div class="project-card">
-          <div class="project-card__header">
-            <h3>Chatbot Flask App</h3>
-            <div class="project-card__links">
-              <a href="https://github.com/nwinf/chatbot-flask" target="_blank" rel="noopener" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
-            </div>
-          </div>
-          <p class="project-card__desc">
-            Conversational AI chatbot with NLP-powered intent recognition and context-aware response generation, served via a Flask REST backend with a clean, responsive web interface.
-          </p>
-          <div class="project-card__tech">
-            <span>Python</span><span>Flask</span><span>NLP</span><span>REST API</span><span>JavaScript</span>
-          </div>
-        </div>
-
-        <!-- Bureau De Change -->
-        <div class="project-card">
-          <div class="project-card__header">
-            <h3>Bureau De Change</h3>
-            <div class="project-card__links">
-              <a href="https://github.com/nwinf/Bureau-De-Change" target="_blank" rel="noopener" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
-            </div>
-          </div>
-          <p class="project-card__desc">
-            Full-stack currency exchange management system for tracking and processing foreign exchange transactions, with real-time rate management, transaction history, and a structured reporting dashboard.
-          </p>
-          <div class="project-card__tech">
-            <span>Python</span><span>Flask</span><span>SQL</span><span>JavaScript</span>
-          </div>
-        </div>
-
-        <!-- Tetris Game -->
-        <div class="project-card">
-          <div class="project-card__header">
-            <h3>Tetris Game</h3>
-            <div class="project-card__links">
-              <a href="https://github.com/nwinf/tetris_game" target="_blank" rel="noopener" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
-            </div>
-          </div>
-          <p class="project-card__desc">
-            Fully functional Tetris game built in Python, demonstrating game logic,
-            OOP design patterns, real-time rendering, and keyboard event handling.
-          </p>
-          <div class="project-card__tech">
-            <span>Python</span><span>Pygame</span><span>OOP</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION & CERTIFICATIONS -->
-  <section class="section" id="education">
-    <div class="container">
-      <div class="section__header">
-        <span class="section__tag">05 / Education & Certifications</span>
-        <h2 class="section__title">Academic Background</h2>
-      </div>
-
-      <div class="edu__grid">
-        <!-- Education -->
-        <div>
-          <h3 class="edu__subtitle">Education</h3>
-          <div class="timeline">
-
-            <div class="timeline__item">
-              <div class="timeline__dot"></div>
-              <div class="timeline__content">
-                <div class="timeline__header">
-                  <div>
-                    <span class="timeline__date">Oct 2022 — Oct 2025</span>
-                    <h3>BSc. Computer Science</h3>
-                    <p class="timeline__org">University of Dodoma (UDOM)</p>
-                  </div>
-                  <span class="timeline__badge timeline__badge--green">Graduated</span>
-                </div>
-                <p class="timeline__desc">
-                  College of Informatics and Virtual Education. Final year project:
-                  <em>NeuroPredict — AI-Powered Brain Cancer Prediction Application</em>.
-                </p>
-                <div class="timeline__tags">
-                  <span>REST APIs</span><span>Data Science</span><span>AI & ML</span>
-                  <span>Networks</span><span>Cybersecurity</span><span>Database Systems</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline__item">
-              <div class="timeline__dot"></div>
-              <div class="timeline__content">
-                <span class="timeline__date">Jul 2020 — May 2022</span>
-                <h3>ACSEE — PMC</h3>
-                <p class="timeline__org">AfricAcademy – Arusha Science School</p>
-                <p class="timeline__desc">Activities: STEM workshops, community outreach, robotics, netball, volleyball.</p>
-                <div class="timeline__tags">
-                  <span>Lego Robotics</span><span>Community Engagement</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline__item">
-              <div class="timeline__dot"></div>
-              <div class="timeline__content">
-                <span class="timeline__date">Jan 2016 — Nov 2019</span>
-                <h3>CSEE — Science</h3>
-                <p class="timeline__org">St. Monica Moshono Girls' Secondary School</p>
-                <p class="timeline__desc">General Secretary, Science Lab Assistant, Sports Team Member.</p>
-                <div class="timeline__tags">
-                  <span>Initiative</span><span>Leadership</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Certifications -->
-        <div>
-          <h3 class="edu__subtitle">Certifications</h3>
-          <div class="certs__grid">
-
-            <div class="cert-card">
-              <div class="cert-card__icon cert-card__icon--cisco">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              </div>
-              <div>
-                <p class="cert-card__name">Cybersecurity Essentials</p>
-                <p class="cert-card__org">Cisco &middot; Apr 2023</p>
-              </div>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-card__icon cert-card__icon--cisco">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              </div>
-              <div>
-                <p class="cert-card__name">Introduction to Cybersecurity</p>
-                <p class="cert-card__org">Cisco &middot; Mar 2023</p>
-              </div>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-card__icon cert-card__icon--icdl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-              </div>
-              <div>
-                <p class="cert-card__name">Artificial Intelligence</p>
-                <p class="cert-card__org">ICDL Africa &middot; Oct 2021</p>
-              </div>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-card__icon cert-card__icon--icdl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              </div>
-              <div>
-                <p class="cert-card__name">Internet of Things</p>
-                <p class="cert-card__org">ICDL Africa &middot; Oct 2021</p>
-              </div>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-card__icon cert-card__icon--icdl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              </div>
-              <div>
-                <p class="cert-card__name">Computer and Online Essentials</p>
-                <p class="cert-card__org">ICDL Africa &middot; Jul 2021</p>
-              </div>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-card__icon cert-card__icon--icdl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              </div>
-              <div>
-                <p class="cert-card__name">Documents</p>
-                <p class="cert-card__org">ICDL Africa &middot; Aug 2021</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section section--dark" id="contact">
-    <div class="container">
-      <div class="section__header">
-        <span class="section__tag">06 / Contact</span>
-        <h2 class="section__title">Get In Touch</h2>
-      </div>
-      <div class="contact__grid">
-        <div class="contact__text">
-          <p>
-            I'm open to opportunities in software development, data science, AI research,
-            and cybersecurity. Whether you have a project in mind, a job opportunity,
-            or just want to connect — my inbox is always open.
-          </p>
-          <div class="contact__links">
-            <a href="https://www.linkedin.com/in/naomi-kimambo-706559234" target="_blank" rel="noopener" class="contact__link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              linkedin.com/in/naomi-kimambo-706559234
-            </a>
-            <a href="https://github.com/nwinf" target="_blank" rel="noopener" class="contact__link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              github.com/nwinf
-            </a>
-            <a href="mailto:naomiwinford@gmail.com" class="contact__link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              naomiwinford@gmail.com
-            </a>
-            <a href="tel:+255657180901" class="contact__link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              +255 657 180 901
-            </a>
-          </div>
-        </div>
-        <div class="contact__cta">
-          <p>Ready to collaborate?</p>
-          <a href="mailto:naomiwinford@gmail.com" class="btn btn--primary btn--large">Say Hello</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <p>Designed & Built by <strong>Naomi W. Kimambo</strong></p>
-      <p class="footer__sub">Software Developer &middot; National Housing Corporation &middot; Dar es Salaam, Tanzania</p>
-    </div>
-  </footer>
-
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
