@@ -1,0 +1,196 @@
+# Pages CMS configuration — https://pagescms.org
+# This gives you a form-based editor for data/content.json.
+# Sign in at https://app.pagescms.org with GitHub, open this repository,
+# edit, and press Save: it commits to GitHub and the live site updates.
+
+media:
+  input: assets
+  output: assets
+
+content:
+  - name: portfolio
+    label: Portfolio content
+    type: file
+    path: data/content.json
+    format: json
+    fields:
+      # ---------- Site / person ----------
+      - name: site
+        label: Person & site
+        type: object
+        fields:
+          - { name: name, label: Full name, type: string }
+          - { name: shortName, label: Short name (top-left of the menu), type: string }
+          - { name: initials, label: Initials (logo badge), type: string }
+          - { name: pageTitle, label: Browser tab title, type: string }
+          - { name: description, label: Search engine description, type: text }
+          - { name: footer, label: Footer text, type: string }
+
+      # ---------- Hero ----------
+      - name: hero
+        label: Top of page (hero)
+        type: object
+        fields:
+          - { name: eyebrow, label: Small line above the name, type: string }
+          - { name: lede, label: Intro paragraph, type: text }
+          - { name: pills, label: Highlight pills, type: string, list: true }
+          - { name: photo, label: Profile photo, type: image }
+          - { name: photoAlt, label: Photo description (for screen readers), type: string }
+          - { name: cardLabel, label: Card label, type: string }
+          - { name: cardTitle, label: Card title, type: string }
+          - { name: cardPoints, label: Card bullet points, type: string, list: true }
+
+      # ---------- About ----------
+      - name: about
+        label: About
+        type: object
+        fields:
+          - { name: navLabel, label: Menu label, type: string }
+          - { name: kicker, label: Small label, type: string }
+          - { name: heading, label: Heading, type: string }
+          - { name: paragraphs, label: Paragraphs, type: text, list: true }
+          - name: facts
+            label: Quick facts
+            type: object
+            list: true
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: value, label: Value, type: string }
+
+      # ---------- Skills ----------
+      - name: skills
+        label: Skills
+        type: object
+        fields:
+          - { name: navLabel, label: Menu label, type: string }
+          - { name: kicker, label: Small label, type: string }
+          - { name: heading, label: Heading, type: string }
+          - name: groups
+            label: Skill groups
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Group name, type: string }
+              - { name: items, label: Skills, type: string, list: true }
+
+      # ---------- Experience ----------
+      - name: experience
+        label: Experience (jobs)
+        type: object
+        fields:
+          - { name: navLabel, label: Menu label, type: string }
+          - { name: kicker, label: Small label, type: string }
+          - { name: heading, label: Heading, type: string }
+          - name: items
+            label: Jobs (newest first)
+            type: object
+            list: true
+            fields:
+              - { name: period, label: Period (e.g. Oct 2025 - Present), type: string }
+              - { name: role, label: Job title, type: string }
+              - { name: org, label: Organisation / location, type: string }
+              - { name: badge, label: Badge (e.g. Current - leave empty for none), type: string }
+              - { name: bullets, label: What you did, type: text, list: true }
+              - { name: tags, label: Tech tags, type: string, list: true }
+
+      # ---------- Current systems ----------
+      - name: systems
+        label: Current systems
+        type: object
+        fields:
+          - { name: navLabel, label: Menu label, type: string }
+          - { name: kicker, label: Small label, type: string }
+          - { name: heading, label: Heading, type: string }
+          - name: items
+            label: Systems
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: badge, label: Badge (leave empty for none), type: string }
+              - { name: featured, label: Highlight this card, type: boolean }
+              - { name: description, label: Description, type: text }
+              - { name: highlights, label: Highlights, type: string, list: true }
+              - { name: tags, label: Tech tags, type: string, list: true }
+              - name: links
+                label: Links
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Link text (e.g. GitHub), type: string }
+                  - { name: href, label: URL, type: string }
+
+      # ---------- Projects ----------
+      - name: projects
+        label: Projects
+        type: object
+        fields:
+          - { name: navLabel, label: Menu label, type: string }
+          - { name: kicker, label: Small label, type: string }
+          - { name: heading, label: Heading, type: string }
+          - name: items
+            label: Projects
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: badge, label: Badge (leave empty for none), type: string }
+              - { name: featured, label: Highlight this card, type: boolean }
+              - { name: description, label: Description, type: text }
+              - { name: highlights, label: Highlights, type: string, list: true }
+              - { name: tags, label: Tech tags, type: string, list: true }
+              - name: links
+                label: Links
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Link text (e.g. GitHub), type: string }
+                  - { name: href, label: URL, type: string }
+
+      # ---------- Education & certifications ----------
+      - name: education
+        label: Education & certifications
+        type: object
+        fields:
+          - { name: navLabel, label: Menu label, type: string }
+          - { name: kicker, label: Small label, type: string }
+          - { name: heading, label: Heading, type: string }
+          - name: items
+            label: Education
+            type: object
+            list: true
+            fields:
+              - { name: period, label: Period, type: string }
+              - { name: title, label: Qualification, type: string }
+              - { name: org, label: School / university, type: string }
+              - { name: result, label: Result (GPA, division...), type: string }
+              - { name: note, label: Note, type: text }
+          - name: certifications
+            label: Certifications
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Certificate, type: string }
+              - { name: org, label: Issuer, type: string }
+              - { name: date, label: Date (or "In progress"), type: string }
+              - { name: note, label: Note, type: string }
+              - { name: url, label: Credential URL, type: string }
+
+      # ---------- Contact ----------
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - { name: navLabel, label: Menu label, type: string }
+          - { name: kicker, label: Small label, type: string }
+          - { name: heading, label: Heading, type: string }
+          - { name: intro, label: Intro text, type: text }
+          - { name: email, label: Email, type: string }
+          - { name: phone, label: Phone (leave empty to hide), type: string }
+          - name: links
+            label: Other links
+            type: object
+            list: true
+            fields:
+              - { name: label, label: Link text, type: string }
+              - { name: href, label: URL, type: string }

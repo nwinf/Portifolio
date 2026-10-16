@@ -4,322 +4,279 @@
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="Z9z8cbytqG5PBHGl-Rmk3sjSYEKmHVpIg6ZKxUalo4U" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Naomi W. Kimambo - software developer portfolio with practical web, data, and AI work." />
-  <title>Naomi W. Kimambo | Portfolio</title>
+  <!-- Title and description are replaced from data/content.json when the page loads -->
+  <meta name="description" content="Software developer portfolio." />
+  <title>Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!--
+    ALL TEXT ON THIS PAGE COMES FROM data/content.json.
+    To add a job, project, certificate, etc. edit that file (or use the editor - see README.md).
+    You should not need to change this HTML file.
+  -->
+
   <div id="app" v-cloak>
-    <header class="site-header">
-      <nav class="nav">
-        <a class="brand" href="#home" @click="closeMenu">
-          <span class="brand__mark">NK</span>
-          <span class="brand__text">Naomi Kimambo</span>
-        </a>
+    <!-- Shown if content.json could not be loaded -->
+    <div v-if="error" class="load-error">
+      <h1>Content could not be loaded</h1>
+      <p>{{ error }}</p>
+    </div>
 
-        <button
-          class="menu-btn"
-          type="button"
-          :aria-expanded="menuOpen ? 'true' : 'false'"
-          aria-controls="site-nav"
-          aria-label="Toggle navigation"
-          @click="toggleMenu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <div id="site-nav" class="nav__links" :class="{ open: menuOpen }">
-          <a
-            v-for="link in navLinks"
-            :key="link.id"
-            :href="`#${link.id}`"
-            :class="{ active: activeSection === link.id }"
-            @click="closeMenu"
-          >
-            {{ link.label }}
+    <template v-else-if="c">
+      <header class="site-header">
+        <nav class="nav">
+          <a class="brand" href="#home" @click="closeMenu">
+            <span class="brand__mark">{{ c.site.initials }}</span>
+            <span class="brand__text">{{ c.site.shortName || c.site.name }}</span>
           </a>
-        </div>
-      </nav>
-    </header>
 
-    <main>
-      <section class="hero section-anchor" id="home">
-        <div class="hero__copy">
-          <p class="eyebrow">Software developer / data & systems</p>
-          <h1>Naomi W. Kimambo</h1>
-          <p class="hero__lede">
-            I am currently working as a Software Developer at National Housing Corporation.
-            I build practical web applications, internal systems, and data-driven tools while growing toward AI, data science, and computer science roles.
-          </p>
+          <button
+            class="menu-btn"
+            type="button"
+            :aria-expanded="menuOpen ? 'true' : 'false'"
+            aria-controls="site-nav"
+            aria-label="Toggle navigation"
+            @click="toggleMenu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-          <div class="hero__actions">
-            <a href="#work" class="btn btn--primary">View work</a>
-            <a href="#contact" class="btn btn--ghost">Contact me</a>
+          <div id="site-nav" class="nav__links" :class="{ open: menuOpen }">
+            <a
+              v-for="link in navLinks"
+              :key="link.id"
+              :href="`#${link.id}`"
+              :class="{ active: activeSection === link.id }"
+              @click="closeMenu"
+            >
+              {{ link.label }}
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <!-- HERO -->
+        <section class="hero section-anchor" id="home">
+          <div class="hero__copy">
+            <p class="eyebrow">{{ c.hero.eyebrow }}</p>
+            <h1>{{ c.site.name }}</h1>
+            <p class="hero__lede">{{ c.hero.lede }}</p>
+
+            <div class="hero__actions">
+              <a href="#work" class="btn btn--primary" v-if="has(c.projects.items)">View work</a>
+              <a href="#contact" class="btn btn--ghost">Contact me</a>
+            </div>
+
+            <div class="pill-row" aria-label="Core technologies">
+              <span v-for="item in c.hero.pills" :key="item" class="pill">{{ item }}</span>
+            </div>
           </div>
 
-          <div class="pill-row" aria-label="Core technologies">
-            <span v-for="item in heroPills" :key="item" class="pill">{{ item }}</span>
-          </div>
-        </div>
+          <aside class="hero__card">
+            <img v-if="c.hero.photo" :src="c.hero.photo" :alt="c.hero.photoAlt || c.site.name" class="hero__photo" />
+            <div class="hero__card-body">
+              <p class="card-label">{{ c.hero.cardLabel }}</p>
+              <h2>{{ c.hero.cardTitle }}</h2>
+              <ul class="check-list">
+                <li v-for="point in c.hero.cardPoints" :key="point">{{ point }}</li>
+              </ul>
+            </div>
+          </aside>
+        </section>
 
-        <aside class="hero__card">
-          <img src="assets/profile-cutout.png" alt="Portrait of Naomi W. Kimambo" class="hero__photo" />
-          <div class="hero__card-body">
-            <p class="card-label">Current focus</p>
-            <h2>Software development today, AI and data science next.</h2>
-            <ul class="check-list">
-              <li>Software Developer at NHC</li>
-              <li>Building public and internal systems</li>
-              <li>Growing into AI, data science, and computer science</li>
-            </ul>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section section-anchor" id="about">
-        <div class="section__header">
-          <p class="section__kicker">About</p>
-          <h2>Software developer building useful systems</h2>
-        </div>
-
-        <div class="about-grid">
-          <div class="panel">
-            <p>
-              I am a software developer with experience across web applications, internal systems,
-              applied machine learning, and technical support. I care about clarity, usability,
-              and code that stays maintainable after the first release.
-            </p>
-            <p>
-              At the moment I am focused on software development at National Housing Corporation,
-              including work on the NHC website and the recruitment portal. Long term, I want to grow further
-              into AI, data science, and computer science work.
-            </p>
+        <!-- ABOUT -->
+        <section v-if="has(c.about.paragraphs) || has(c.about.facts)" class="section section-anchor" :class="{ 'section--soft': isSoft('about') }" id="about">
+          <div class="section__header">
+            <p class="section__kicker">{{ c.about.kicker }}</p>
+            <h2>{{ c.about.heading }}</h2>
           </div>
 
-          <div class="panel facts">
-            <div class="fact">
-              <span>Location</span>
-              <strong>Dar es Salaam, Tanzania</strong>
+          <div class="about-grid">
+            <div class="panel prose">
+              <p v-for="(para, i) in c.about.paragraphs" :key="i">{{ para }}</p>
             </div>
-            <div class="fact">
-              <span>Current role</span>
-              <strong>Software Developer, NHC</strong>
-            </div>
-            <div class="fact">
-              <span>Education</span>
-              <strong>BSc. Computer Science</strong>
-            </div>
-            <div class="fact">
-              <span>Focus</span>
-              <strong>Software, AI, data science</strong>
-            </div>
-            <div class="fact">
-              <span>Certification</span>
-              <strong>SAL1 - ongoing</strong>
+
+            <div class="panel facts" v-if="has(c.about.facts)">
+              <div v-for="fact in c.about.facts" :key="fact.label" class="fact">
+                <span>{{ fact.label }}</span>
+                <strong>{{ fact.value }}</strong>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section section--soft section-anchor" id="skills">
-        <div class="section__header">
-          <p class="section__kicker">Skills</p>
-          <h2>Tools and technologies I use across the stack.</h2>
-        </div>
+        <!-- SKILLS -->
+        <section v-if="has(c.skills.groups)" class="section section-anchor" :class="{ 'section--soft': isSoft('skills') }" id="skills">
+          <div class="section__header">
+            <p class="section__kicker">{{ c.skills.kicker }}</p>
+            <h2>{{ c.skills.heading }}</h2>
+          </div>
 
-        <div class="grid grid--skills">
-          <article v-for="group in skillGroups" :key="group.title" class="panel">
-            <h3>{{ group.title }}</h3>
-            <div class="tag-cloud">
-              <span v-for="item in group.items" :key="item" class="tag">{{ item }}</span>
-            </div>
-          </article>
-        </div>
-      </section>
+          <div class="grid grid--skills">
+            <article v-for="group in c.skills.groups" :key="group.title" class="panel">
+              <h3>{{ group.title }}</h3>
+              <div class="tag-cloud">
+                <span v-for="item in group.items" :key="item" class="tag">{{ item }}</span>
+              </div>
+            </article>
+          </div>
+        </section>
 
-      <section class="section section-anchor" id="experience">
-        <div class="section__header">
-          <p class="section__kicker">Experience</p>
-          <h2>Recent roles and practical work.</h2>
-        </div>
+        <!-- EXPERIENCE -->
+        <section v-if="has(c.experience.items)" class="section section-anchor" :class="{ 'section--soft': isSoft('experience') }" id="experience">
+          <div class="section__header">
+            <p class="section__kicker">{{ c.experience.kicker }}</p>
+            <h2>{{ c.experience.heading }}</h2>
+          </div>
 
-        <div class="timeline">
-          <article v-for="job in experience" :key="job.role + job.org" class="timeline__item">
-            <div class="timeline__marker"></div>
-            <div class="panel timeline__content">
-              <div class="timeline__top">
-                <div>
-                  <p class="timeline__date">{{ job.period }}</p>
-                  <h3>{{ job.role }}</h3>
-                  <p class="timeline__org">{{ job.org }}</p>
+          <div class="timeline">
+            <article v-for="(job, i) in c.experience.items" :key="i" class="timeline__item">
+              <div class="timeline__marker"></div>
+              <div class="panel timeline__content">
+                <div class="timeline__top">
+                  <div>
+                    <p class="timeline__date">{{ job.period }}</p>
+                    <h3>{{ job.role }}</h3>
+                    <p class="timeline__org">{{ job.org }}</p>
+                  </div>
+                  <span v-if="job.badge" class="badge">{{ job.badge }}</span>
                 </div>
-                <span v-if="job.badge" class="badge">{{ job.badge }}</span>
+
+                <ul class="list" v-if="has(job.bullets)">
+                  <li v-for="bullet in job.bullets" :key="bullet">{{ bullet }}</li>
+                </ul>
+
+                <div class="tag-cloud tag-cloud--compact" v-if="has(job.tags)">
+                  <span v-for="tag in job.tags" :key="tag" class="tag">{{ tag }}</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- SYSTEMS + PROJECTS (same card layout) -->
+        <section
+          v-for="block in projectBlocks"
+          :key="block.id"
+          class="section section-anchor"
+          :class="{ 'section--soft': isSoft(block.id) }"
+          :id="block.id"
+        >
+          <div class="section__header">
+            <p class="section__kicker">{{ block.data.kicker }}</p>
+            <h2>{{ block.data.heading }}</h2>
+          </div>
+
+          <div class="grid grid--projects">
+            <article
+              v-for="(project, i) in block.data.items"
+              :key="i"
+              class="panel project"
+              :class="{ 'project--featured': project.featured }"
+            >
+              <div class="project__top">
+                <div>
+                  <p v-if="project.badge" class="badge badge--soft">{{ project.badge }}</p>
+                  <h3>{{ project.title }}</h3>
+                </div>
+                <div class="project__links" v-if="has(project.links)">
+                  <a v-for="link in project.links" :key="link.href" :href="link.href" target="_blank" rel="noopener">
+                    {{ link.label }}
+                  </a>
+                </div>
               </div>
 
-              <ul class="list">
-                <li v-for="bullet in job.bullets" :key="bullet">{{ bullet }}</li>
+              <p class="project__desc">{{ project.description }}</p>
+
+              <ul v-if="has(project.highlights)" class="list list--tight">
+                <li v-for="point in project.highlights" :key="point">{{ point }}</li>
               </ul>
 
-              <div class="tag-cloud tag-cloud--compact">
-                <span v-for="tag in job.tags" :key="tag" class="tag">{{ tag }}</span>
+              <div class="tag-cloud tag-cloud--compact" v-if="has(project.tags)">
+                <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
               </div>
-            </div>
-          </article>
-        </div>
-      </section>
+            </article>
+          </div>
+        </section>
 
-      <section class="section section--soft section-anchor" id="systems">
-        <div class="section__header">
-          <p class="section__kicker">Current systems</p>
-          <h2>Live platforms I work with right now.</h2>
-        </div>
-
-        <div class="grid grid--projects">
-          <article class="panel project">
-            <div class="project__top">
-              <div>
-                <p class="badge badge--soft">NHC</p>
-                <h3>NHC website</h3>
-              </div>
-              <div class="project__links">
-                <a href="https://www.nhc.co.tz/" target="_blank" rel="noopener">Visit site</a>
-              </div>
-            </div>
-            <p class="project__desc">
-              Public-facing website for National Housing Corporation. I have contributed to keeping it clear, usable, and easy to maintain.
-            </p>
-          </article>
-
-          <article class="panel project">
-            <div class="project__top">
-              <div>
-                <p class="badge badge--soft">NHC</p>
-                <h3>Recruitment portal</h3>
-              </div>
-              <div class="project__links">
-                <a href="https://ajira.nhc.co.tz/" target="_blank" rel="noopener">Visit portal</a>
-              </div>
-            </div>
-            <p class="project__desc">
-              Recruitment portal for job-related workflows and applications. It reflects the kind of software work I do in my current role, including the Vacancy Management Module.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section section--soft section-anchor" id="work">
-        <div class="section__header">
-          <p class="section__kicker">Selected work</p>
-          <h2>Projects that show the range of my work.</h2>
-        </div>
-
-        <div class="grid grid--projects">
-          <article
-            v-for="project in projects"
-            :key="project.title"
-            class="panel project"
-            :class="{ 'project--featured': project.featured }"
-          >
-            <div class="project__top">
-              <div>
-                <p v-if="project.badge" class="badge badge--soft">{{ project.badge }}</p>
-                <h3>{{ project.title }}</h3>
-              </div>
-              <div class="project__links" v-if="project.links && project.links.length">
-                <a v-for="link in project.links" :key="link.label" :href="link.href" target="_blank" rel="noopener">
-                  {{ link.label }}
-                </a>
-              </div>
-            </div>
-
-            <p class="project__desc">{{ project.description }}</p>
-
-            <ul v-if="project.highlights" class="list list--tight">
-              <li v-for="point in project.highlights" :key="point">{{ point }}</li>
-            </ul>
-
-            <div class="tag-cloud tag-cloud--compact">
-              <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section section-anchor" id="education">
-        <div class="section__header">
-          <p class="section__kicker">Education and certifications</p>
-          <h2>Academic background and training.</h2>
-        </div>
-
-        <div class="edu-grid">
-          <div class="panel">
-            <h3>Education</h3>
-            <div class="stack">
-              <article v-for="edu in education" :key="edu.title" class="stack__item">
-                <p class="timeline__date">{{ edu.period }}</p>
-                <h4>{{ edu.title }}</h4>
-                <p class="muted">{{ edu.org }}</p>
-                <p class="edu-result">{{ edu.result }}</p>
-                <p class="muted">{{ edu.note }}</p>
-              </article>
-            </div>
+        <!-- EDUCATION + CERTIFICATIONS -->
+        <section v-if="has(c.education.items) || has(c.education.certifications)" class="section section-anchor" :class="{ 'section--soft': isSoft('education') }" id="education">
+          <div class="section__header">
+            <p class="section__kicker">{{ c.education.kicker }}</p>
+            <h2>{{ c.education.heading }}</h2>
           </div>
 
-          <div class="panel">
-            <h3>Certifications</h3>
-            <div class="cert-list">
-              <article v-for="cert in certifications" :key="cert.name" class="cert-item">
-                <div class="cert-item__main">
-                  <p class="timeline__date">{{ cert.date }}</p>
-                  <h4>{{ cert.name }}</h4>
-                  <p class="muted">{{ cert.org }}</p>
-                  <p v-if="cert.note" class="cert-item__note">{{ cert.note }}</p>
-                </div>
-                <a v-if="cert.url" :href="cert.url" target="_blank" rel="noopener" class="cert-item__link">
-                  Credential URL
-                </a>
-                <span v-else class="cert-item__link cert-item__link--muted">
-                  Entry
-                </span>
-              </article>
+          <div class="edu-grid">
+            <div class="panel" v-if="has(c.education.items)">
+              <h3>Education</h3>
+              <div class="stack">
+                <article v-for="(edu, i) in c.education.items" :key="i" class="stack__item">
+                  <p class="timeline__date">{{ edu.period }}</p>
+                  <h4>{{ edu.title }}</h4>
+                  <p class="muted">{{ edu.org }}</p>
+                  <p v-if="edu.result" class="edu-result">{{ edu.result }}</p>
+                  <p v-if="edu.note" class="muted">{{ edu.note }}</p>
+                </article>
+              </div>
+            </div>
+
+            <div class="panel" v-if="has(c.education.certifications)">
+              <h3>Certifications</h3>
+              <div class="cert-list">
+                <article v-for="(cert, i) in c.education.certifications" :key="i" class="cert-item">
+                  <div class="cert-item__main">
+                    <p class="timeline__date">{{ cert.date }}</p>
+                    <h4>{{ cert.name }}</h4>
+                    <p class="muted">{{ cert.org }}</p>
+                    <p v-if="cert.note" class="cert-item__note">{{ cert.note }}</p>
+                  </div>
+                  <a v-if="cert.url" :href="cert.url" target="_blank" rel="noopener" class="cert-item__link">
+                    Credential URL
+                  </a>
+                </article>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section section--soft section-anchor" id="contact">
-        <div class="section__header">
-          <p class="section__kicker">Contact</p>
-          <h2>Open to software, frontend, and data opportunities.</h2>
-        </div>
-
-        <div class="contact panel">
-          <p>
-            If you are hiring for software development, frontend, or data work, I would love to connect.
-            I am happy to share more project details or walk through the code behind this portfolio.
-          </p>
-
-          <div class="contact__links">
-            <a href="mailto:naomiwinford@gmail.com">naomiwinford@gmail.com</a>
-            <a href="tel:+255657180901">+255 657 180 901</a>
-            <a href="https://www.linkedin.com/in/naomi-kimambo-706559234" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/nwinf" target="_blank" rel="noopener">GitHub</a>
+        <!-- CONTACT -->
+        <section class="section section-anchor" :class="{ 'section--soft': isSoft('contact') }" id="contact">
+          <div class="section__header">
+            <p class="section__kicker">{{ c.contact.kicker }}</p>
+            <h2>{{ c.contact.heading }}</h2>
           </div>
-        </div>
-      </section>
-    </main>
 
-    <footer class="footer">
-      <p>Naomi W. Kimambo - Software Developer</p>
-    </footer>
+          <div class="contact panel">
+            <p v-if="c.contact.intro">{{ c.contact.intro }}</p>
+
+            <div class="contact__links">
+              <a v-if="c.contact.email" :href="`mailto:${c.contact.email}`">{{ c.contact.email }}</a>
+              <a v-if="c.contact.phone" :href="`tel:${telHref}`">{{ c.contact.phone }}</a>
+              <a v-for="link in c.contact.links" :key="link.href" :href="link.href" target="_blank" rel="noopener">{{ link.label }}</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>{{ c.site.footer }}</p>
+      </footer>
+    </template>
   </div>
 
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <noscript>
+    <p style="padding:24px;font-family:sans-serif">This portfolio needs JavaScript enabled to display.</p>
+  </noscript>
+
+  <!-- Vue is pinned to an exact version so a future release can't break the site -->
+  <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
