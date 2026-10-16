@@ -4,88 +4,213 @@
     "shortName": "Naomi Kimambo",
     "initials": "NK",
     "pageTitle": "Naomi W. Kimambo | Portfolio",
-    "description": "Naomi W. Kimambo - software developer portfolio with practical web, data, and AI work.",
-    "footer": "Naomi W. Kimambo - Software Developer"
+    "description": "Naomi W. Kimambo — Computer Science graduate and I&M Bank Management Trainee with experience in software engineering, enterprise systems, data, and applied AI.",
+    "footer": "Naomi W. Kimambo | Technology, Banking & Data"
   },
-
   "hero": {
-    "eyebrow": "Software developer / data & systems",
-    "lede": "I am currently working as a Software Developer at National Housing Corporation. I build practical web applications, internal systems, and data-driven tools while growing toward AI, data science, and computer science roles.",
-    "pills": ["Software Development", "Python", "SQL", "AI", "Cybersecurity"],
+    "eyebrow": "Computer Science | Banking & Technology | Data",
+    "lede": "I am a Computer Science graduate and Management Trainee at I&M Bank Tanzania, with hands-on experience building web applications and internal systems at the National Housing Corporation. I am interested in how banking, data platforms, AI, cybersecurity, and cloud technology can improve digital services.",
+    "pills": [
+      "Software Engineering",
+      "Banking Technology",
+      "SQL & Data",
+      "AI/ML",
+      "Cybersecurity"
+    ],
     "photo": "assets/profile-cutout.png",
     "photoAlt": "Portrait of Naomi W. Kimambo",
     "cardLabel": "Current focus",
-    "cardTitle": "Software development today, AI and data science next.",
+    "cardTitle": "Connecting software, data, and banking.",
     "cardPoints": [
-      "Software Developer at NHC",
-      "Building public and internal systems",
-      "Growing into AI, data science, and computer science"
+      "Management Trainee at I&M Bank Tanzania",
+      "Previously built internal systems at NHC",
+      "Developing toward data engineering and digital banking technology"
     ]
   },
-
   "about": {
     "navLabel": "About",
     "kicker": "About",
-    "heading": "Software developer building useful systems",
+    "heading": "Computer Science graduate connecting technology and banking",
     "paragraphs": [
-      "I am a software developer with experience across web applications, internal systems, applied machine learning, and technical support. I care about clarity, usability, and code that stays maintainable after the first release.",
-      "At the moment I am focused on software development at National Housing Corporation, including work on the NHC website and the recruitment portal. Long term, I want to grow further into AI, data science, and computer science work."
+      "I am a Computer Science graduate from the University of Dodoma with practical experience in software development, database-backed applications, applied machine learning, and IT support. I enjoy turning operational needs into useful systems, with attention to usability, maintainability, and reliable data.",
+      "I currently work as a Management Trainee at I&M Bank Tanzania. Before joining the bank, I completed an ICT/software development internship at the National Housing Corporation, where I built and contributed to internal business systems. My long-term interests include digital banking, data engineering and architecture, AI, cybersecurity, and technology-led transformation."
     ],
     "facts": [
-      { "label": "Location", "value": "Dar es Salaam, Tanzania" },
-      { "label": "Current role", "value": "Software Developer, NHC" },
-      { "label": "Education", "value": "BSc. Computer Science" },
-      { "label": "Focus", "value": "Software, AI, data science" },
-      { "label": "Certification", "value": "SAL1 - ongoing" }
+      {
+        "label": "Location",
+        "value": "Tanzania"
+      },
+      {
+        "label": "Current role",
+        "value": "Management Trainee, I&M Bank Tanzania"
+      },
+      {
+        "label": "Education",
+        "value": "BSc Computer Science, UDOM"
+      },
+      {
+        "label": "GPA",
+        "value": "3.9"
+      },
+      {
+        "label": "Focus",
+        "value": "Banking technology, data, software"
+      }
     ]
   },
-
   "skills": {
     "navLabel": "Skills",
     "kicker": "Skills",
-    "heading": "Tools and technologies I use across the stack.",
+    "heading": "Technical foundations across software, data, and systems.",
     "groups": [
-      { "title": "Frontend", "items": ["JavaScript", "HTML", "CSS", "Vue.js", "Responsive UI", "Bootstrap", "Tailwind CSS"] },
-      { "title": "Backend", "items": ["Python", "Django", "Django REST Framework", "Flask", "FastAPI", "Java", "REST APIs"] },
-      { "title": "Databases", "items": ["PostgreSQL", "MySQL", "SQLite", "MongoDB", "Database Design", "SQL Query Optimization"] },
-      { "title": "Android Development", "items": ["Java", "Android Studio", "UI/UX Design", "Mobile App Development"] },
-      { "title": "Data", "items": ["Machine Learning", "Data Visualization", "SQL", "Pandas", "NumPy"] },
-      { "title": "Tools", "items": ["Git", "GitHub", "Postman", "Linux"] },
-      { "title": "Cybersecurity", "items": ["Network Security", "Ethical Hacking", "Vulnerability Assessment", "Security Best Practices"] },
-      { "title": "System Administration and Management", "items": ["System Administration", "IT Support", "Documentation", "Process Improvement", "Windows Server"] },
-      { "title": "Soft Skills", "items": ["Problem Solving", "Team Collaboration", "Communication", "Adaptability", "Time Management", "Presentation Skills"] }
+      {
+        "title": "Frontend",
+        "items": [
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "Vue.js",
+          "Responsive UI",
+          "Bootstrap",
+          "Tailwind CSS"
+        ]
+      },
+      {
+        "title": "Backend & APIs",
+        "items": [
+          "Python",
+          "Django",
+          "Django REST Framework",
+          "Flask",
+          "FastAPI",
+          "Java",
+          "REST APIs"
+        ]
+      },
+      {
+        "title": "Databases & Data",
+        "items": [
+          "SQL",
+          "PostgreSQL",
+          "MySQL",
+          "SQLite",
+          "MongoDB",
+          "Database Design",
+          "Data Cleaning",
+          "Data Analysis"
+        ]
+      },
+      {
+        "title": "AI & Machine Learning",
+        "items": [
+          "Scikit-learn",
+          "TensorFlow",
+          "Pandas",
+          "NumPy",
+          "Computer Vision",
+          "Data Visualization"
+        ]
+      },
+      {
+        "title": "Tools & Platforms",
+        "items": [
+          "Git",
+          "GitHub",
+          "Postman",
+          "Linux",
+          "Windows Server"
+        ]
+      },
+      {
+        "title": "Cybersecurity",
+        "items": [
+          "Cybersecurity Fundamentals",
+          "Network Security",
+          "Vulnerability Assessment",
+          "Security Best Practices"
+        ]
+      },
+      {
+        "title": "IT & Systems",
+        "items": [
+          "System Administration",
+          "IT Support",
+          "Technical Documentation",
+          "Process Improvement",
+          "Requirements Analysis"
+        ]
+      },
+      {
+        "title": "Professional Skills",
+        "items": [
+          "Problem Solving",
+          "Communication",
+          "Team Collaboration",
+          "Adaptability",
+          "Presentation Skills"
+        ]
+      }
     ]
   },
-
   "experience": {
     "navLabel": "Experience",
     "kicker": "Experience",
-    "heading": "Recent roles and practical work.",
+    "heading": "Experience across banking, software, and IT systems.",
     "items": [
       {
-        "period": "Oct 2025 - Present",
-        "role": "Software Developer",
-        "org": "National Housing Corporation (NHC) - Internship, Dar es Salaam, Tanzania",
+        "period": "Sep 2026 - Present",
+        "role": "Management Trainee",
+        "org": "I&M Bank Tanzania",
         "badge": "Current",
         "bullets": [
-          "Developed and maintained internal web applications for staff workflows, reporting, and service delivery.",
-          "Worked on public and internal systems, including the NHC website and the recruitment portal.",
-          "Designed database structures and improved SQL queries for faster record retrieval.",
-          "Collaborated with finance, administration, and IT teams to translate requirements into usable software."
+          "Participating in a management trainee programme within the banking sector.",
+          "Building practical understanding of banking operations, customer services, and technology-enabled financial services.",
+          "Developing a career direction at the intersection of banking, data, digital transformation, and technology."
         ],
-        "tags": ["Django", "Python", "PostgreSQL", "RBAC", "REST APIs"]
+        "tags": [
+          "Banking",
+          "Digital Transformation",
+          "Technology",
+          "Data"
+        ]
       },
       {
-        "period": "Jul 2024 - Sep 2024",
-        "role": "IT Support",
-        "org": "Tanzania Revenue Authority (TRA) - Internship, Arusha, Tanzania",
+        "period": "Oct 2025 - Aug 2026",
+        "role": "Software Engineer / ICT Intern",
+        "org": "National Housing Corporation (NHC), Dar es Salaam, Tanzania",
         "badge": "",
         "bullets": [
-          "Supported internal systems and helped test data management modules used by revenue officers.",
-          "Resolved hardware and software issues across multiple workstations to reduce downtime.",
-          "Documented processes and user guides to support non-technical staff."
+          "Independently designed and developed an ICT Asset Registry System to support asset records and related workflows.",
+          "Worked on the recruitment and vacancy management portal, including application and recruitment workflows.",
+          "Contributed to construction-tracking system architecture and database design.",
+          "Supported NHC website updates, ERP gap analysis, and hardware/software troubleshooting.",
+          "Worked with stakeholders to understand operational needs and translate them into system features and documentation."
         ],
-        "tags": ["IT Support", "QA", "Documentation", "Networking"]
+        "tags": [
+          "Python",
+          "Django",
+          "PostgreSQL",
+          "Database Design",
+          "RBAC",
+          "Systems Analysis"
+        ]
+      },
+      {
+        "period": "Jan 2024 - Apr 2024",
+        "role": "IT Support Intern",
+        "org": "Tanzania Revenue Authority (TRA), Tanzania",
+        "badge": "",
+        "bullets": [
+          "Provided basic hardware and software support and helped troubleshoot workstation issues.",
+          "Assisted with Active Directory account-related tasks and IT asset support.",
+          "Supported testing and documentation activities for internal IT processes."
+        ],
+        "tags": [
+          "IT Support",
+          "Active Directory",
+          "Troubleshooting",
+          "Documentation"
+        ]
       },
       {
         "period": "Jul 2023 - Oct 2023",
@@ -93,41 +218,54 @@
         "org": "University of Dodoma (UDOM)",
         "badge": "",
         "bullets": [
-          "Built a lung cancer prediction system using Python and machine learning.",
-          "Created a pharmacy inventory system with real-time stock tracking and alerts.",
-          "Presented prototypes and technical documentation to supervisors."
+          "Developed a lung cancer prediction project using Python and machine learning.",
+          "Built a pharmacy inventory system with stock tracking and alerts.",
+          "Presented project prototypes and technical documentation to supervisors."
         ],
-        "tags": ["Python", "Machine Learning", "Java", "Database Design"]
+        "tags": [
+          "Python",
+          "Machine Learning",
+          "Java",
+          "Database Design"
+        ]
       }
     ]
   },
-
   "systems": {
     "navLabel": "Systems",
     "kicker": "Current systems",
-    "heading": "Live platforms I work with right now.",
+    "heading": "Selected organizational systems and platforms.",
     "items": [
       {
         "badge": "NHC",
         "title": "NHC website",
-        "description": "Public-facing website for National Housing Corporation. I have contributed to keeping it clear, usable, and easy to maintain.",
+        "description": "Public-facing website for the National Housing Corporation. Contributed to website updates and maintenance during the ICT internship.",
         "featured": false,
         "highlights": [],
         "tags": [],
-        "links": [{ "label": "Visit site", "href": "https://www.nhc.co.tz/" }]
+        "links": [
+          {
+            "label": "Visit site",
+            "href": "https://www.nhc.co.tz/"
+          }
+        ]
       },
       {
         "badge": "NHC",
         "title": "Recruitment portal",
-        "description": "Recruitment portal for job-related workflows and applications. It reflects the kind of software work I do in my current role, including the Vacancy Management Module.",
+        "description": "Recruitment portal supporting job-related workflows and applications. Contributed to the portal and its Vacancy Management Module during the NHC internship.",
         "featured": false,
         "highlights": [],
         "tags": [],
-        "links": [{ "label": "Visit portal", "href": "https://ajira.nhc.co.tz/" }]
+        "links": [
+          {
+            "label": "Visit portal",
+            "href": "https://ajira.nhc.co.tz/"
+          }
+        ]
       }
     ]
   },
-
   "projects": {
     "navLabel": "Work",
     "kicker": "Selected work",
@@ -143,8 +281,19 @@
           "FastAPI backend for real-time prediction",
           "Explainable outputs for transparent clinical review"
         ],
-        "tags": ["Python", "TensorFlow", "FastAPI", "OpenCV", "PostgreSQL"],
-        "links": [{ "label": "GitHub", "href": "https://github.com/nwinf/NeuroPredict" }]
+        "tags": [
+          "Python",
+          "TensorFlow",
+          "FastAPI",
+          "OpenCV",
+          "PostgreSQL"
+        ],
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/nwinf/NeuroPredict"
+          }
+        ]
       },
       {
         "badge": "",
@@ -156,8 +305,20 @@
           "Pinch to press keys with hand tracking",
           "Runs locally or in the browser via GitHub Pages"
         ],
-        "tags": ["Python", "OpenCV", "MediaPipe", "pynput", "Web App", "Desktop App"],
-        "links": [{ "label": "GitHub", "href": "https://github.com/nwinf/VirtualKeyboard" }]
+        "tags": [
+          "Python",
+          "OpenCV",
+          "MediaPipe",
+          "pynput",
+          "Web App",
+          "Desktop App"
+        ],
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/nwinf/VirtualKeyboard"
+          }
+        ]
       },
       {
         "badge": "Featured",
@@ -169,8 +330,20 @@
           "Request submission, approval, and tracking workflow",
           "Database-backed asset registry with search and reporting"
         ],
-        "tags": ["Python", "Django", "ORM", "SQL", "Frontend", "Backend"],
-        "links": [{ "label": "GitHub", "href": "https://github.com/nwinf/office_asset_registry" }]
+        "tags": [
+          "Python",
+          "Django",
+          "ORM",
+          "SQL",
+          "Frontend",
+          "Backend"
+        ],
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/nwinf/office_asset_registry"
+          }
+        ]
       },
       {
         "badge": "",
@@ -182,8 +355,19 @@
           "Model selection and hyperparameter tuning for optimal performance",
           "Evaluation metrics and visualization of prediction results"
         ],
-        "tags": ["Python", "Scikit-learn", "Pandas", "NumPy", "Flask"],
-        "links": [{ "label": "GitHub", "href": "https://github.com/nwinf/LungcancerPrediction" }]
+        "tags": [
+          "Python",
+          "Scikit-learn",
+          "Pandas",
+          "NumPy",
+          "Flask"
+        ],
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/nwinf/LungcancerPrediction"
+          }
+        ]
       },
       {
         "badge": "",
@@ -191,12 +375,22 @@
         "description": "Conversational AI chatbot with NLP-powered intent recognition and context-aware response generation.",
         "featured": false,
         "highlights": [],
-        "tags": ["Python", "Flask", "NLP", "REST API", "JavaScript"],
-        "links": [{ "label": "GitHub", "href": "https://github.com/nwinf/chatbot-flask" }]
+        "tags": [
+          "Python",
+          "Flask",
+          "NLP",
+          "REST API",
+          "JavaScript"
+        ],
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/nwinf/chatbot-flask"
+          }
+        ]
       }
     ]
   },
-
   "education": {
     "navLabel": "Education",
     "kicker": "Education and certifications",
@@ -225,26 +419,73 @@
       }
     ],
     "certifications": [
-      { "name": "SAL1", "org": "TryHackMe", "date": "In progress", "note": "Cybersecurity certification currently in progress", "url": "" },
-      { "name": "Cybersecurity Essentials", "org": "Cisco", "date": "Apr 2023", "note": "", "url": "https://www.credly.com/badges/13ff51f5-0c9d-47a2-b536-b5603a63d02d/linked_in_profile" },
-      { "name": "Introduction to Cybersecurity", "org": "Cisco", "date": "Mar 2023", "note": "", "url": "https://www.credly.com/badges/de5c5fe8-f655-4725-b1f3-6a8cdef33136/linked_in_profile" },
-      { "name": "Artificial Intelligence", "org": "ICDL Africa", "date": "Oct 2021", "note": "", "url": "https://profile.icdlafrica.org/86a95ab8-dbbf-40bb-b497-5f51200c6cce?record_view=true" },
-      { "name": "Internet of Things", "org": "ICDL Africa", "date": "Oct 2021", "note": "", "url": "https://profile.icdlafrica.org/1e13557f-4a7b-4e3a-9552-4036acb4992a" },
-      { "name": "Computer and Online Essentials", "org": "ICDL Africa", "date": "Jul 2021", "note": "", "url": "https://profile.icdlafrica.org/66888714-58b5-48ce-9ed0-0fd6d649a701?record_view=true" },
-      { "name": "Documents", "org": "ICDL Africa", "date": "Aug 2021", "note": "", "url": "https://profile.icdlafrica.org/bb319e00-3994-4e6b-aed5-e2d28937d843" }
+      {
+        "name": "SAL1",
+        "org": "TryHackMe",
+        "date": "In progress",
+        "note": "Cybersecurity certification currently in progress",
+        "url": ""
+      },
+      {
+        "name": "Cybersecurity Essentials",
+        "org": "Cisco",
+        "date": "Apr 2023",
+        "note": "",
+        "url": "https://www.credly.com/badges/13ff51f5-0c9d-47a2-b536-b5603a63d02d/linked_in_profile"
+      },
+      {
+        "name": "Introduction to Cybersecurity",
+        "org": "Cisco",
+        "date": "Mar 2023",
+        "note": "",
+        "url": "https://www.credly.com/badges/de5c5fe8-f655-4725-b1f3-6a8cdef33136/linked_in_profile"
+      },
+      {
+        "name": "Artificial Intelligence",
+        "org": "ICDL Africa",
+        "date": "Oct 2021",
+        "note": "",
+        "url": "https://profile.icdlafrica.org/86a95ab8-dbbf-40bb-b497-5f51200c6cce?record_view=true"
+      },
+      {
+        "name": "Internet of Things",
+        "org": "ICDL Africa",
+        "date": "Oct 2021",
+        "note": "",
+        "url": "https://profile.icdlafrica.org/1e13557f-4a7b-4e3a-9552-4036acb4992a"
+      },
+      {
+        "name": "Computer and Online Essentials",
+        "org": "ICDL Africa",
+        "date": "Jul 2021",
+        "note": "",
+        "url": "https://profile.icdlafrica.org/66888714-58b5-48ce-9ed0-0fd6d649a701?record_view=true"
+      },
+      {
+        "name": "Documents",
+        "org": "ICDL Africa",
+        "date": "Aug 2021",
+        "note": "",
+        "url": "https://profile.icdlafrica.org/bb319e00-3994-4e6b-aed5-e2d28937d843"
+      }
     ]
   },
-
   "contact": {
     "navLabel": "Contact",
     "kicker": "Contact",
-    "heading": "Open to software, frontend, and data opportunities.",
-    "intro": "If you are hiring for software development, frontend, or data work, I would love to connect. I am happy to share more project details or walk through the code behind this portfolio.",
+    "heading": "Connect about software, data, and banking technology.",
+    "intro": "I am interested in opportunities and conversations around software engineering, data platforms, digital banking, AI, and cybersecurity. I am happy to discuss my projects, technical approach, and experience building practical systems.",
     "email": "naomiwinford@gmail.com",
     "phone": "+255 657 180 901",
     "links": [
-      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/naomi-kimambo-706559234" },
-      { "label": "GitHub", "href": "https://github.com/nwinf" }
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/naomi-kimambo-706559234"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/nwinf"
+      }
     ]
   }
 }
