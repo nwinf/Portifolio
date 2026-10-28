@@ -2,7 +2,7 @@
 
 A one-page personal portfolio. **Everything the page says comes from one file:
 [`data/content.json`](data/content.json).** The HTML, CSS and JavaScript never need
-to change when you get a new job, finish a project or earn a certificate.
+to change when you want to ipdate job status, project and etc.
 
 ```
 data/content.json   <- all text, jobs, projects, links  (edit this)
