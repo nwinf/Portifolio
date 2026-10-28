@@ -15,7 +15,7 @@ js/script.js        <- loads content.json and renders it
 
 ---
 
-## Option 1 — Edit with forms in the browser (easiest)
+## Option 1 : Edit with forms in the browser (easiest)
 
 [Pages CMS](https://pagescms.org) is a free editor that reads `.pages.yml` and gives you
 forms for every section — no JSON to type.
@@ -32,12 +32,12 @@ forms for every section — no JSON to type.
 3. Press **Save**. It commits to GitHub and the live site updates within about a minute.
 
 Projects, certifications, skills, contact links and the profile photo work the same way.
-To change the photo, use the image field — it uploads to `assets/`.
+To change the photo, use the image field, it uploads to `assets/`.
 
-## Option 2 — Edit the JSON directly on GitHub
+## Option 2 : Edit the JSON directly on GitHub
 
 1. Open `data/content.json` on GitHub and click the pencil (✏️) icon.
-2. Copy an existing entry, paste it, and change the text. Example — a new job at the top of `experience.items`:
+2. Copy an existing entry, paste it, and change the text. Example, a new job at the top of `experience.items`:
 
 ```json
 "items": [
@@ -60,7 +60,7 @@ To change the photo, use the image field — it uploads to `assets/`.
 
 **JSON rules that catch people out:** every item in a list is separated by a comma, but there is
 **no comma after the last one**; all text goes in `"double quotes"`. If the page shows
-*"Content could not be loaded"* after an edit, there is a typo — paste the file into
+*"Content could not be loaded"* after an edit, there is a typo, paste the file into
 <https://jsonlint.com> to find the line.
 
 ## Hiding a section
@@ -69,14 +69,14 @@ Empty a section's list and it disappears from the page **and** the menu. For exa
 `"systems": { ..., "items": [] }` hides "Current systems".
 Leave `"phone": ""` empty to hide the phone number.
 
-## Option 3 — Use this portfolio for another person
+## Option 3 : Use this portfolio for another person
 
 1. On GitHub click **Fork** (or *Use this template*) to make a copy under their account.
 2. Replace `assets/profile-cutout.png` with their photo (or upload a new file and set `hero.photo`).
-3. Replace the contents of `data/content.json` with their details — or, after step 1, sign in to
+3. Replace the contents of `data/content.json` with their details or, after step 1, sign in to
    Pages CMS with their GitHub and fill in the forms.
 4. Delete `google0bda5fbb4f7cbbfa.html` and the `google-site-verification` meta tag in
-   `index.html` — those belong to the original owner's Google Search Console.
+   `index.html`, those belong to the original owner's Google Search Console.
 5. Repository **Settings → Pages → Deploy from branch → main / root**. The site will be at
    `https://<username>.github.io/<repo-name>/`.
 
